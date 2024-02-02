@@ -1,16 +1,18 @@
 import os
 import sys
-import pandas as pd
-from pathlib import Path
-
-file = __file__  # Move this line to the top of your script
-
-sys.path.append(str(Path(file).parent.parent))
 from exception import CustomException
 from logger import logging
+import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
+from pathlib import Path
+
+
+file = __file__
+
+sys.path.append(str(Path(file).parent.parent))
+
 
 from components.data_transformation import DataTransformation
 from components.data_transformation import DataTransformationConfig
@@ -33,9 +35,7 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Entered the data ingestion method or component")
         try:
-            df = pd.read_csv(
-                r"C:\Users\Anuj Bohra\Desktop\ML\Basic_ML_Project\notebook\data\stud.csv"
-            )
+            df = pd.read_csv("notebook\data\stud.csv")
             logging.info("Read the dataset as dataframe")
 
             os.makedirs(
@@ -55,7 +55,7 @@ class DataIngestion:
                 self.ingestion_config.test_data_path, index=False, header=True
             )
 
-            logging.info("Inmgestion of the data iss completed")
+            logging.info("Ingestion of the data is completed")
 
             return (
                 self.ingestion_config.train_data_path,
