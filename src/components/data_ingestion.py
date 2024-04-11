@@ -1,8 +1,9 @@
+#to implement modular coding i.e. converting jupyter notebook code into python code 
 import os
 import sys
 from exception import CustomException
 from logger import logging
-import pandas as pd
+import pandas as pd 
 
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
@@ -21,7 +22,7 @@ from components.model_trainer import ModelTrainerConfig
 from components.model_trainer import ModelTrainer
 
 
-@dataclass
+@dataclass #decorator
 class DataIngestionConfig:
     train_data_path: str = os.path.join("artifacts", "train.csv")
     test_data_path: str = os.path.join("artifacts", "test.csv")
